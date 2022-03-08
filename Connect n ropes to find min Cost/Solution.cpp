@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct MinHeap{
+struct MinHeap
+{
 	unsigned size;
 	unsigned capacity;
 	int* harr;
