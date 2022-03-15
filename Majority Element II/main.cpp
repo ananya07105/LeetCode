@@ -1,6 +1,7 @@
 class Solution {
 public:
-    vector<int> majorityElement(vector<int>& nums) {
+    vector<int> majorityElement(vector<int>& nums)
+    {
         int sz=nums.size();
         int num1=-1,num2=-1,cnt1=0,cnt2=0;
         for(int i=0;i<sz;i++)
