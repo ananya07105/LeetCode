@@ -9,7 +9,6 @@ public:
            tempB=tempB==NULL?headA:tempB->next;
        }
         return tempA;
-        
     }
     
 };
