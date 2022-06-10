@@ -1,17 +1,31 @@
 class Solution {
 public:
+    int maxs(int a,int b)
+    {
+        if(a>b)
+            return a;
+        else
+            return b;
+    }
     int lengthOfLongestSubstring(string s) {
-       vector<int> mpp(256,-1);
-        int left=0,right=0;
-        int n=s.size();
-        int len=0;
-        while(right<n){
-            if(mpp[s[right]]!=-1)
-                left=max(mpp[s[right]]+1,left);
-            mpp[s[right]]=right;
-            len=max(len,right-left+1);
-            right++;
+        int max=0;
+        set<char> hash;
+        int i=0,j=0;
+        while(i<s.length()&&j<s.length())
+        {
+            if(hash.count(s[j]))
+            {
+                hash.erase(s[i]);
+                i+=1;
+            }
+            else
+            {
+                hash.insert(s[j]);
+                j+=1;
+                max=maxs(j-i,max);
+                    
+            }
         }
-        return len;
+        return max;
     }
 };
