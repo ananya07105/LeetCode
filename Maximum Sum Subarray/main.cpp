@@ -1,11 +1,13 @@
-class maxSubArraySum(int arr[])
-{
-  int currSum=arr[0];
-  int maxSum=arr[0];
-  for(int i=1;i<arr.length;i++)
-  {
-    currSum=max(arr[i],currSum+arr[i]);
-    maxSum=max(currSum,maxSum);
-  }
-  return maxSum;
-}
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int sum=0, maxi=INT_MIN;
+        for(auto it: nums)
+        {
+            sum+=it;
+            maxi=max(sum,maxi);
+            if(sum<=0) sum=0;
+        }
+        return maxi;
+    }
+};
