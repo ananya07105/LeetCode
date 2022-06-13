@@ -1,3 +1,8 @@
 # Write your MySQL query statement below
-SELECT employee_id, IF (employee_id%2!=0 AND substring(name,1,1)!='M', salary, 0) AS bonus
+SELECT employee_id,
+case
+ when employee_id%2=0 then 0
+ when name like 'M%' then 0
+ else salary end
+as 'bonus'
 FROM Employees
