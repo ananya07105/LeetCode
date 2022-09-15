@@ -1,25 +1,13 @@
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        stack<TreeNode*> stk;
-        
-        long long last = LLONG_MIN;
-        TreeNode* cur = root;
-        
-        while(!stk.empty() || cur){
-            while(cur){
-                stk.push(cur);
-                cur = cur->left;
-            }
-            
-            cur = stk.top(); stk.pop();
-            
-            if(cur->val <= last) return false;
-            last = cur->val;
-            
-            cur = cur->right;
-        }
-        
-        return true;
+        return bst(root, LONG_MIN, LONG_MAX);
+    }
+    bool bst(TreeNode* root,long int min,long int max)
+    {
+        if(root==NULL) return true;
+        if(root->val<=min || root->val>=max)
+            return false;
+        return bst(root->left, min,root->val) && bst(root->right,root->val,max);
     }
 };
